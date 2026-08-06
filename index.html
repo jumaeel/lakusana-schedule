@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#1668b0">
 <title>Lakusana 2026 — HDh. Nolhivaram | Event Schedule</title>
 <meta name="description" content="Lakusana 2026 · HDh. Nolhivaram — event schedule. See what programmes are running now, pick a day, and filter by time frame.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%93%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231668b0%22%20stroke-width%3D%221.8%22%3E%3Cpath%20d%3D%22M16%202V6M8%202V6%22%20%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M13%204H11C7.22876%204%205.34315%204%204.17157%205.17157C3%206.34315%203%208.22876%203%2012V14C3%2017.7712%203%2019.6569%204.17157%2020.8284C5.34315%2022%207.22876%2022%2011%2022H13C16.7712%2022%2018.6569%2022%2019.8284%2020.8284C21%2019.6569%2021%2017.7712%2021%2014V12C21%208.22876%2021%206.34315%2019.8284%205.17157C18.6569%204%2016.7712%204%2013%204Z%22%20%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M3%2010H21%22%20%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%2F%3E%3Cpath%20d%3D%22M12.1258%2014H12.0008M12.1258%2018H12.0008M7.625%2014H7.5M7.625%2018H7.5M16.625%2014H16.5M12.2508%2014C12.2508%2014.1381%2012.1389%2014.25%2012.0008%2014.25C11.8628%2014.25%2011.7508%2014.1381%2011.7508%2014C11.7508%2013.8619%2011.8628%2013.75%2012.0008%2013.75C12.1389%2013.75%2012.2508%2013.8619%2012.2508%2014ZM12.2508%2018C12.2508%2018.1381%2012.1389%2018.25%2012.0008%2018.25C11.8628%2018.25%2011.7508%2018.1381%2011.7508%2018C11.7508%2017.8619%2011.8628%2017.75%2012.0008%2017.75C12.1389%2017.75%2012.2508%2017.8619%2012.2508%2018ZM7.75%2014C7.75%2014.1381%207.63807%2014.25%207.5%2014.25C7.36193%2014.25%207.25%2014.1381%207.25%2014C7.25%2013.8619%207.36193%2013.75%207.5%2013.75C7.63807%2013.75%207.75%2013.8619%207.75%2014ZM7.75%2018C7.75%2018.1381%207.63807%2018.25%207.5%2018.25C7.36193%2018.25%207.25%2018.1381%207.25%2018C7.25%2017.8619%207.36193%2017.75%207.5%2017.75C7.63807%2017.75%207.75%2017.8619%207.75%2018ZM16.75%2014C16.75%2014.1381%2016.6381%2014.25%2016.5%2014.25C16.3619%2014.25%2016.25%2014.1381%2016.25%2014C16.25%2013.8619%2016.3619%2013.75%2016.5%2013.75C16.6381%2013.75%2016.75%2013.8619%2016.75%2014Z%22%20%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%221.5%22%2F%3E%3C%2Fsvg%3E">
 <style>
 :root{
   /* Lakusana 2026 palette — sky blue & crimson from the campaign poster */
@@ -18,8 +18,9 @@
   --meal:#9a6205;         --meal-soft:#fbf2e0;    /* amber — food service */
   --radius:14px; --shadow:0 1px 2px rgba(18,33,47,.05),0 8px 24px -12px rgba(18,33,47,.22);
 }
+/* dark tokens apply on system preference unless light is pinned, or when dark is pinned */
 @media (prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme="light"]){
     --bg:#0b1621; --panel:#12212f; --ink:#e6eef6; --muted:#8ba7c0;
     --line:#1e3446;
     --brand:#5cb0f2;      --brand-soft:#122e46;
@@ -29,6 +30,20 @@
     --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 24px -12px rgba(0,0,0,.7);
   }
 }
+:root[data-theme="dark"]{
+    --bg:#0b1621; --panel:#12212f; --ink:#e6eef6; --muted:#8ba7c0;
+    --line:#1e3446;
+    --brand:#5cb0f2;      --brand-soft:#122e46;
+    --accent:#f08b90;     --accent-soft:#3a1519;
+    --live:#3ddc9a;       --live-soft:#0f2f26;
+    --meal:#f0b429;       --meal-soft:#33260d;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 24px -12px rgba(0,0,0,.7);
+}
+:root{color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+:root[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+.ic{width:1em;height:1em;flex:0 0 auto;vertical-align:-.13em;stroke-width:1.6}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
@@ -53,8 +68,9 @@ header::before{content:"";position:absolute;inset:0;pointer-events:none;
 header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
   background:linear-gradient(90deg,var(--accent),#c8323a 55%,var(--accent));}
 @media (prefers-color-scheme:dark){
-  header{background:linear-gradient(168deg,#1c5b90 0%,#123f66 45%,#0a1f34 100%)}
+  :root:not([data-theme="light"]) header{background:linear-gradient(168deg,#1c5b90 0%,#123f66 45%,#0a1f34 100%)}
 }
+:root[data-theme="dark"] header{background:linear-gradient(168deg,#1c5b90 0%,#123f66 45%,#0a1f34 100%)}
 .hd{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 16px}
 .brandline{display:flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.18em;
   text-transform:uppercase;font-weight:700;flex-wrap:wrap}
@@ -62,7 +78,7 @@ header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
 .brandline .yr{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);
   border-radius:5px;padding:3px 8px;letter-spacing:.1em}
 .brandline .loc{letter-spacing:.14em;opacity:.9}
-.brandline .loc::before{content:"📍";margin-right:5px;letter-spacing:0}
+.brandline .loc{display:inline-flex;align-items:center;gap:5px}
 h1{margin:10px 0 2px;font-size:clamp(27px,6.4vw,40px);line-height:1.08;letter-spacing:-.025em;
   text-shadow:0 2px 14px rgba(8,40,68,.35)}
 .sub{margin:0;opacity:.92;font-size:14px}
@@ -72,6 +88,47 @@ h1{margin:10px 0 2px;font-size:clamp(27px,6.4vw,40px);line-height:1.08;letter-sp
 .dot{width:8px;height:8px;border-radius:50%;background:#3ddc9a;box-shadow:0 0 0 0 rgba(61,220,154,.7);
   animation:pulse 2.2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(61,220,154,0)}100%{box-shadow:0 0 0 0 rgba(61,220,154,0)}}
+
+/* ---------- theme toggle ---------- */
+.theme-btn{position:absolute;top:0;right:16px;display:inline-flex;align-items:center;gap:7px;
+  font:inherit;font-size:13px;font-weight:600;color:#fff;cursor:pointer;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);
+  border-radius:999px;padding:8px 14px;min-height:40px;backdrop-filter:blur(6px);transition:.15s}
+.theme-btn:hover{background:rgba(255,255,255,.3)}
+.theme-btn .ic{width:16px;height:16px}
+
+/* ---------- collapsible sections ---------- */
+.fold{display:flex;align-items:center;gap:9px;width:100%;margin-top:14px;
+  font:inherit;font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);background:none;border:0;border-top:1px solid var(--line);
+  padding:13px 0 0;cursor:pointer;text-align:left;min-height:44px}
+.fold:hover{color:var(--brand)}
+.fold .ft{flex:0 0 auto}
+.fold .fsum{flex:1 1 auto;min-width:0;font-size:11.5px;font-weight:600;letter-spacing:.02em;
+  text-transform:none;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  text-align:right}
+.fold .chev{width:16px;height:16px;flex:0 0 auto;transition:transform .2s}
+.fold[aria-expanded="false"] .chev{transform:rotate(-90deg)}
+.fold[aria-expanded="false"]+*{display:none}
+.meal-bar .fold{margin-top:0;border-top:0;padding-top:0;color:var(--meal)}
+.meal-bar .fold .fsum{color:var(--meal)}
+.meal-bar .fold[aria-expanded="true"]{margin-bottom:10px}
+
+/* ---------- narrow screens ---------- */
+@media (max-width:560px){
+  header{padding:22px 0 20px}
+  .theme-btn{position:static;margin-top:12px;margin-left:10px}
+  .wrap{padding:0 12px 48px}
+  .controls,.meal-bar,.now-strip,.meal-alert{padding:13px}
+  .stats{grid-template-columns:1fr 1fr;gap:8px}
+  .stat{padding:12px}
+  .stat .sv{font-size:24px}
+  .stat .sn{font-size:11px}
+  .meal-pills{grid-template-columns:1fr}
+  .bar{flex-direction:column;align-items:flex-start;gap:2px;margin:18px 2px 8px}
+  .card{padding:13px}
+  .title{font-size:15.5px}
+}
 
 /* ---------- controls ---------- */
 .controls{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
@@ -99,7 +156,8 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   padding:8px 14px;min-height:38px;transition:.15s}
 .chip:hover{border-color:var(--brand);color:var(--brand)}
 .chip[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
-@media (prefers-color-scheme:dark){.chip[aria-pressed=true]{color:#08192a}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip[aria-pressed=true]{color:#08192a}}
+:root[data-theme="dark"] .chip[aria-pressed=true]{color:#08192a}
 
 /* ---------- stats ---------- */
 .stats{display:grid;gap:10px;margin-bottom:16px;
@@ -108,7 +166,7 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   box-shadow:var(--shadow);padding:14px 15px}
 .stat .sl{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
   letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.stat .sl i{font-style:normal;font-size:13px}
+.stat .sl .ic{width:14px;height:14px;color:var(--brand)}
 .stat .sv{display:block;margin-top:7px;font-size:30px;font-weight:650;line-height:1;
   letter-spacing:-.02em;color:var(--ink)}
 .stat .sn{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
@@ -121,21 +179,25 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
   animation:mealIn .35s ease-out}
 .meal-alert[hidden]{display:none}
 @keyframes mealIn{from{opacity:0;transform:translateY(-6px)}}
-.meal-alert .ma-icon{font-size:26px;line-height:1;flex:0 0 auto}
+.meal-alert .ma-icon{flex:0 0 auto;display:flex}
+.meal-alert .ma-icon .ic{width:28px;height:28px;stroke-width:1.5}
 .meal-alert b{display:block;font-size:16px;letter-spacing:-.01em}
 .meal-alert span{font-size:13px;opacity:.92}
 
 .meal-bar{background:var(--meal-soft);border:1px solid color-mix(in srgb,var(--meal) 28%,transparent);
   border-radius:var(--radius);padding:13px 15px;margin-bottom:16px}
-.meal-bar h2{margin:0 0 10px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--meal)}
+.meal-bar h2{display:flex;align-items:center;gap:7px;margin:0 0 10px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--meal)}
 .meal-pills{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(158px,1fr))}
-.meal-pill{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);
-  border-radius:10px;padding:9px 11px}
-.meal-pill .mi{font-size:17px;line-height:1}
-.meal-pill .mn{font-size:14px;font-weight:600;line-height:1.25;flex:1 1 auto;min-width:0}
+.meal-pill{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 10px;align-items:center;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.meal-pill .mi{display:flex;grid-row:1/3;align-self:center;color:var(--meal)}
+.meal-pill .mi .ic{width:19px;height:19px}
+.meal-pill.on .mi{color:#fff}
+.meal-pill .dv{display:inline;margin-left:5px}
+.meal-pill .mn{font-size:14px;font-weight:600;line-height:1.25;min-width:0;overflow-wrap:anywhere}
 .meal-pill .mt{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--meal);
   white-space:nowrap}
-.meal-pill .mr{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:0 0 auto}
+.meal-pill .mr{display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px;min-width:0}
 .meal-pill .ms{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
   color:var(--muted);white-space:nowrap}
 .meal-pill .ms.next{color:var(--meal)}
@@ -147,11 +209,13 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .meal-pill.on .mt{color:#fff}
 .meal-pill.on .dv{color:rgba(255,255,255,.82)}
 .meal-pill.on .ms.on{color:#fff}
-.meal-pill.on .ms.on::first-letter{animation:blink 1.4s ease-in-out infinite}
+.meal-pill .ms.on{display:inline-flex;align-items:center;gap:4px}
+.meal-pill .ms.on .ic{width:9px;height:9px;animation:blink 1.4s ease-in-out infinite}
 .meal-pill.done{opacity:.45}
 .dv{display:block;font-style:normal;font-weight:500;font-size:12.5px;color:var(--muted);
   direction:rtl;unicode-bidi:isolate}
 .title .dv{display:inline-block;margin-left:6px;vertical-align:baseline}
+.title .ic{color:var(--meal);vertical-align:-.1em}
 
 /* ---------- now strip ---------- */
 .now-strip{background:var(--live-soft);border:1px solid color-mix(in srgb,var(--live) 30%,transparent);
@@ -166,7 +230,8 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .now-item span{color:var(--muted);font-size:13px}
 
 /* ---------- results ---------- */
-.bar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:22px 4px 10px}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;
+  gap:4px 12px;margin:22px 4px 10px}
 .bar h2{margin:0;font-size:17px;letter-spacing:-.01em}
 .count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 
@@ -200,12 +265,13 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .meta{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:12px;color:var(--muted);background:var(--bg);border:1px solid var(--line);
   border-radius:7px;padding:4px 8px;display:inline-flex;align-items:center;gap:5px;max-width:100%}
+.tag .ic{width:13px;height:13px;color:var(--muted)}
 .tag b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .badge{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
   border-radius:6px;padding:4px 7px}
 .badge.live{background:var(--live);color:#fff}
 .badge.status{display:inline-flex;align-items:center;gap:5px;border:1px solid transparent}
-.badge.status i{font-style:normal;font-size:9px;line-height:1}
+.badge.status .ic{width:12px;height:12px}
 .badge.status.ongoing{background:var(--live);color:#fff}
 .badge.status.ongoing i{animation:blink 1.4s ease-in-out infinite}
 @keyframes blink{50%{opacity:.25}}
@@ -227,24 +293,65 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-
 </head>
 <body>
 
+<!-- HugeIcons (free core set, MIT) — inlined so the page stays self-contained -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none"><path d="M16 2V6M8 2V6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M13 4H11C7.22876 4 5.34315 4 4.17157 5.17157C3 6.34315 3 8.22876 3 12V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C21 19.6569 21 17.7712 21 14V12C21 8.22876 21 6.34315 19.8284 5.17157C18.6569 4 16.7712 4 13 4Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M3 10H21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M12.1258 14H12.0008M12.1258 18H12.0008M7.625 14H7.5M7.625 18H7.5M16.625 14H16.5M12.2508 14C12.2508 14.1381 12.1389 14.25 12.0008 14.25C11.8628 14.25 11.7508 14.1381 11.7508 14C11.7508 13.8619 11.8628 13.75 12.0008 13.75C12.1389 13.75 12.2508 13.8619 12.2508 14ZM12.2508 18C12.2508 18.1381 12.1389 18.25 12.0008 18.25C11.8628 18.25 11.7508 18.1381 11.7508 18C11.7508 17.8619 11.8628 17.75 12.0008 17.75C12.1389 17.75 12.2508 17.8619 12.2508 18ZM7.75 14C7.75 14.1381 7.63807 14.25 7.5 14.25C7.36193 14.25 7.25 14.1381 7.25 14C7.25 13.8619 7.36193 13.75 7.5 13.75C7.63807 13.75 7.75 13.8619 7.75 14ZM7.75 18C7.75 18.1381 7.63807 18.25 7.5 18.25C7.36193 18.25 7.25 18.1381 7.25 18C7.25 17.8619 7.36193 17.75 7.5 17.75C7.63807 17.75 7.75 17.8619 7.75 18ZM16.75 14C16.75 14.1381 16.6381 14.25 16.5 14.25C16.3619 14.25 16.25 14.1381 16.25 14C16.25 13.8619 16.3619 13.75 16.5 13.75C16.6381 13.75 16.75 13.8619 16.75 14Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24" fill="none"><path d="M17 7V11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7Z" stroke="currentColor" stroke-width="1.5"/><path d="M17 7H14M17 11H14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/><path d="M20 11C20 15.4183 16.4183 19 12 19M12 19C7.58172 19 4 15.4183 4 11M12 19V22M12 22H15M12 22H9" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none"><path d="M13.6177 21.367C13.1841 21.773 12.6044 22 12.0011 22C11.3978 22 10.8182 21.773 10.3845 21.367C6.41302 17.626 1.09076 13.4469 3.68627 7.37966C5.08963 4.09916 8.45834 2 12.0011 2C15.5439 2 18.9126 4.09916 20.316 7.37966C22.9082 13.4393 17.599 17.6389 13.6177 21.367Z" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 11C15.5 12.933 13.933 14.5 12 14.5C10.067 14.5 8.5 12.933 8.5 11C8.5 9.067 10.067 7.5 12 7.5C13.933 7.5 15.5 9.067 15.5 11Z" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24" fill="none"><path d="M15.5 11C15.5 9.067 13.933 7.5 12 7.5C10.067 7.5 8.5 9.067 8.5 11C8.5 12.933 10.067 14.5 12 14.5C13.933 14.5 15.5 12.933 15.5 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15.4827 11.3499C15.8047 11.4475 16.1462 11.5 16.5 11.5C18.433 11.5 20 9.933 20 8C20 6.067 18.433 4.5 16.5 4.5C14.6851 4.5 13.1928 5.8814 13.0173 7.65013" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M10.9827 7.65013C10.8072 5.8814 9.31492 4.5 7.5 4.5C5.567 4.5 4 6.067 4 8C4 9.933 5.567 11.5 7.5 11.5C7.85381 11.5 8.19535 11.4475 8.51727 11.3499" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M22 16.5C22 13.7386 19.5376 11.5 16.5 11.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M17.5 19.5C17.5 16.7386 15.0376 14.5 12 14.5C8.96243 14.5 6.5 16.7386 6.5 19.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M7.5 11.5C4.46243 11.5 2 13.7386 2 16.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-food" viewBox="0 0 24 24" fill="none"><path d="M4 21.001L7.00071 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M15 10.001L14 11.001" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M17.9999 3.00098L14.9999 6.00098C14.4547 6.54623 14.1821 6.81885 14.0363 7.11295C13.759 7.6725 13.759 8.32945 14.0363 8.88901C14.1821 9.1831 14.4547 9.45573 14.9999 10.001C15.5452 10.5462 15.8178 10.8189 16.1119 10.9646C16.6715 11.2419 17.3284 11.2419 17.888 10.9646C18.1821 10.8189 18.4547 10.5462 18.9999 10.001L21.9999 7.00098" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20 5L17 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M20 21L12 13M12 13L2 3C2 6.84174 3.52612 10.5261 6.24264 13.2426L9 16L12 13Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-coffee" viewBox="0 0 24 24" fill="none"><path d="M18.2505 10.5H19.6403C21.4918 10.5 22.0421 10.7655 21.9975 12.0838C21.9237 14.2674 20.939 16.8047 17 17.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/><path d="M5.94627 20.6145C2.57185 18.02 2.07468 14.3401 2.00143 10.5001C1.96979 8.8413 2.45126 8.5 4.65919 8.5H15.3408C17.5487 8.5 18.0302 8.8413 17.9986 10.5001C17.9253 14.3401 17.4281 18.02 14.0537 20.6145C13.0934 21.3528 12.2831 21.5 10.9194 21.5H9.08064C7.71686 21.5 6.90658 21.3528 5.94627 20.6145Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/><path d="M11.3089 2.5C10.7622 2.83861 10.0012 4 10.0012 5.5M7.53971 4C7.53971 4 7 4.5 7 5.5M14.0012 4C13.7279 4.1693 13.5 5 13.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-rice" viewBox="0 0 24 24" fill="none"><path d="M3.91145 12H18.0886C19.6914 12 20.2786 12.3707 19.8787 13.9821C19.1733 16.8246 17.1759 17.5306 15.3304 19.3859C14.8819 19.8369 15.5798 20.5032 15.5802 20.9992C15.5809 21.933 14.6928 22 13.9854 22H8.0146C7.30717 22 6.41908 21.933 6.41982 20.9992C6.4202 20.5137 7.0972 19.8159 6.66957 19.3859C4.82407 17.5306 2.82674 16.8246 2.12128 13.9821C1.72136 12.3707 2.30857 12 3.91145 12Z" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/><path d="M18.5 12C18.5 10.2089 16.6001 8.98823 15 9.69218M10 6.96519C9.64708 6.49221 9.13252 6.14848 8.53891 6.01716C6.62631 5.59405 4.90104 7.65834 5.7151 9.49889C4.46855 9.64127 3.5 10.7067 3.5 12M16.292 9.48272C17.0733 7.68217 15.4185 5.58415 13.4611 6.01716C12.9848 3.32761 9.01516 3.32761 8.53891 6.01716" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M17 9L22 3" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M16 6L18 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-tea" viewBox="0 0 24 24" fill="none"><path d="M18.2505 10.5H19.6403C21.4918 10.5 22.0421 10.7655 21.9975 12.0838C21.9237 14.2674 20.939 16.8047 17 17.5" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/><path d="M5.94627 20.6145C2.57185 18.02 2.07468 14.3401 2.00143 10.5001C1.96979 8.8413 2.45126 8.5 4.65919 8.5H15.3408C17.5487 8.5 18.0302 8.8413 17.9986 10.5001C17.9253 14.3401 17.4281 18.02 14.0537 20.6145C13.0934 21.3528 12.2831 21.5 10.9194 21.5H9.08064C7.71686 21.5 6.90658 21.3528 5.94627 20.6145Z" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/><path d="M10 8.5V13.5M8.50424 16.2966L8.79616 14.4451C8.88166 13.9028 9.39425 13.5 9.99884 13.5C10.6034 13.5 11.116 13.9028 11.2015 14.4451L11.4934 16.2966C11.6508 17.2944 8.36613 17.1726 8.50424 16.2966Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M11.3089 2.5C10.7622 2.83861 10.0012 4 10.0012 5.5M7.53971 4C7.53971 4 7 4.5 7 5.5M14.0012 4C13.7279 4.1693 13.5 5 13.5 5.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none"><path d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5L10.5 15L16 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-record" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8V12L14 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none"><path d="M17 17L21 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/><path d="M19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19C15.4183 19 19 15.4183 19 11Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-filter" viewBox="0 0 24 24" fill="none"><path d="M8.85746 12.5061C6.36901 10.6456 4.59564 8.59915 3.62734 7.44867C3.3276 7.09253 3.22938 6.8319 3.17033 6.3728C2.96811 4.8008 2.86701 4.0148 3.32795 3.5074C3.7889 3 4.60404 3 6.23433 3H17.7657C19.396 3 20.2111 3 20.672 3.5074C21.133 4.0148 21.0319 4.8008 20.8297 6.37281C20.7706 6.83191 20.6724 7.09254 20.3726 7.44867C19.403 8.60062 17.6261 10.6507 15.1326 12.5135C14.907 12.6821 14.7583 12.9567 14.7307 13.2614C14.4837 15.992 14.2559 17.4876 14.1141 18.2442C13.8853 19.4657 12.1532 20.2006 11.226 20.8563C10.6741 21.2466 10.0043 20.782 9.93278 20.1778C9.79643 19.0261 9.53961 16.6864 9.25927 13.2614C9.23409 12.9539 9.08486 12.6761 8.85746 12.5061Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="none"><path d="M13.7276 3.44418L15.4874 6.99288C15.7274 7.48687 16.3673 7.9607 16.9073 8.05143L20.0969 8.58575C22.1367 8.92853 22.6167 10.4206 21.1468 11.8925L18.6671 14.3927C18.2471 14.8161 18.0172 15.6327 18.1471 16.2175L18.8571 19.3125C19.417 21.7623 18.1271 22.71 15.9774 21.4296L12.9877 19.6452C12.4478 19.3226 11.5579 19.3226 11.0079 19.6452L8.01827 21.4296C5.8785 22.71 4.57865 21.7522 5.13859 19.3125L5.84851 16.2175C5.97849 15.6327 5.74852 14.8161 5.32856 14.3927L2.84884 11.8925C1.389 10.4206 1.85895 8.92853 3.89872 8.58575L7.08837 8.05143C7.61831 7.9607 8.25824 7.48687 8.49821 6.99288L10.258 3.44418C11.2179 1.51861 12.7777 1.51861 13.7276 3.44418Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none"><path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M12 2V3.5M12 20.5V22M19.0708 19.0713L18.0101 18.0106M5.98926 5.98926L4.9286 4.9286M22 12H20.5M3.5 12H2M19.0713 4.92871L18.0106 5.98937M5.98975 18.0107L4.92909 19.0714" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none"><path d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+<symbol id="i-chev" viewBox="0 0 24 24" fill="none"><path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/></symbol>
+</svg>
+
 <header>
   <div class="hd">
-    <div class="brandline"><span class="bml">BML Islamic</span><span class="yr">Lakusana 2026</span><span class="loc">HDh. Nolhivaram</span></div>
+    <div class="brandline"><span class="bml">BML Islamic</span><span class="yr">Lakusana 2026</span><span class="loc"><svg class="ic"><use href="#i-pin"/></svg>HDh. Nolhivaram</span></div>
     <h1>Event Schedule</h1>
     <p class="sub">Live programme guide — pick a day, choose a time frame.</p>
     <div class="clock"><span class="dot"></span><span id="clock">—</span></div>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch colour theme">
+      <svg class="ic"><use href="#i-sun" id="themeIcon"/></svg>
+      <span id="themeLabel">Light</span>
+    </button>
   </div>
 </header>
 
 <div class="wrap">
 
+  <section class="now-strip" id="nowStrip" hidden>
+    <h2><span class="dot"></span>Happening right now</h2>
+    <div class="now-list" id="nowList"></div>
+  </section>
+
+  <section class="meal-alert" id="mealAlert" hidden></section>
+
   <section class="stats" id="stats" aria-label="Schedule summary"></section>
 
   <section class="controls">
-    <div class="field" style="margin-bottom:14px">
+    <div class="field">
       <label>Jump to day</label>
       <div class="presets" id="dayChips"></div>
     </div>
+
+    <button class="fold" id="filterToggle" aria-expanded="true" aria-controls="filterBody">
+      <svg class="ic"><use href="#i-filter"/></svg>
+      <span class="ft">Filters &amp; time frame</span>
+      <span class="fsum" id="filterSummary"></span>
+      <svg class="ic chev"><use href="#i-chev"/></svg>
+    </button>
+
+    <div id="filterBody">
     <div class="row">
       <div class="field">
         <label for="day">Day</label>
@@ -282,18 +389,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-
         </div>
       </div>
     </div>
+    </div>
   </section>
-
-  <section class="meal-alert" id="mealAlert" hidden></section>
 
   <section class="meal-bar" aria-label="Meal times">
-    <h2>🍽️ Food for organizers &amp; officials</h2>
+    <button class="fold" id="mealToggle" aria-expanded="true" aria-controls="mealPills">
+      <svg class="ic"><use href="#i-food"/></svg>
+      <span class="ft">Food for organizers &amp; officials</span>
+      <span class="fsum" id="mealSummary"></span>
+      <svg class="ic chev"><use href="#i-chev"/></svg>
+    </button>
     <div class="meal-pills" id="mealPills"></div>
-  </section>
-
-  <section class="now-strip" id="nowStrip" hidden>
-    <h2><span class="dot"></span>Happening right now</h2>
-    <div class="now-list" id="nowList"></div>
   </section>
 
   <div class="bar">
@@ -427,11 +533,12 @@ const SCHEDULE = {
 /* ======================= MEAL TIMES (all days) =======================
    Food service for organizers & officials. Shown on every day. */
 const MEALS = [
-  {name:"Breakfast",     dv:"ހެނދުނު",  icon:"☕", start:"0700", end:"0900"},
-  {name:"Lunch",         dv:"މެންދުރު", icon:"🍛", start:"1200", end:"1330"},
-  {name:"Afternoon Tea", dv:"ހަވީރު",   icon:"🫖", start:"1630", end:"1800"},
-  {name:"Dinner",        dv:"ރޭގަނޑު",  icon:"🍽️", start:"1900", end:"2100"}
+  {name:"Breakfast",     dv:"ހެނދުނު",  icon:"coffee", start:"0700", end:"0900"},
+  {name:"Lunch",         dv:"މެންދުރު", icon:"rice",   start:"1200", end:"1330"},
+  {name:"Afternoon Tea", dv:"ހަވީރު",   icon:"tea",    start:"1630", end:"1800"},
+  {name:"Dinner",        dv:"ރޭގަނޑު",  icon:"food",   start:"1900", end:"2100"}
 ];
+const icon = n => `<svg class="ic"><use href="#i-${n}"/></svg>`;
 
 /* ============================ HELPERS ============================ */
 const $ = s => document.querySelector(s);
@@ -452,7 +559,7 @@ function parse(r){
 const MEAL_AUDIENCE = "Organizers & Officials";
 function mealEvents(){
   return MEALS.map(m=>({
-    name:`${m.icon} ${m.name} served`, dv:m.dv, batch:"", start:m.start, end:m.end,
+    name:`${m.name} served`, icon:m.icon, dv:m.dv, batch:"", start:m.start, end:m.end,
     audience:MEAL_AUDIENCE, venue:"", facilitator:"", facParts:[], fura:false, meal:true,
     s:mins(m.start), e:mins(m.end)
   }));
@@ -580,12 +687,12 @@ function renderStats(isToday){
   const dayWord = day ? (isToday ? "Today's events" : day.label.split("—")[0].trim()+" events")
                       : "Events";
   const tiles = [
-    {icon:"📋", label:dayWord,     value:d.events, note:`<em>${TOTALS.events}</em> across all ${dates.length} days`},
-    {icon:"🎤", label:"Facilitators", value:d.facs, note:`<em>${TOTALS.facs}</em> in total`},
-    {icon:"📍", label:"Locations",    value:d.venues, note:`<em>${TOTALS.venues}</em> venues in use`}
+    {icon:"calendar", label:dayWord,     value:d.events, note:`<em>${TOTALS.events}</em> across all ${dates.length} days`},
+    {icon:"mic", label:"Facilitators", value:d.facs, note:`<em>${TOTALS.facs}</em> in total`},
+    {icon:"pin", label:"Locations",    value:d.venues, note:`<em>${TOTALS.venues}</em> venues in use`}
   ];
   $("#stats").innerHTML = tiles.map(t=>`<div class="stat">
-      <span class="sl"><i>${t.icon}</i>${esc(t.label)}</span>
+      <span class="sl">${icon(t.icon)}${esc(t.label)}</span>
       <b class="sv">${t.value}</b>
       <span class="sn">${t.note}</span>
     </div>`).join("");
@@ -599,28 +706,30 @@ function renderMealBar(isToday,now){
     const on = active===m, done = isToday && now>=mins(m.end);
     const away = mins(m.start)-now;
     const status = !isToday ? "" :
-        on   ? `<span class="ms on">● Ready now</span>` :
+        on   ? `<span class="ms on"><svg class="ic"><use href="#i-record"/></svg>Ready now</span>` :
         done ? `<span class="ms">Served</span>` :
         away<=90 ? `<span class="ms next">in ${away} min</span>` :
                    `<span class="ms">Upcoming</span>`;
     return `<div class="meal-pill${on?" on":""}${done?" done":""}">
-      <span class="mi">${m.icon}</span>
+      <span class="mi">${icon(m.icon)}</span>
       <span class="mn">${m.name}<i class="dv">${m.dv}</i></span>
       <span class="mr"><span class="mt">${fmt(m.start)}–${fmt(m.end)}</span>${status}</span>
     </div>`;
   }).join("");
 
+  foldSummaries(active);
+
   const el=$("#mealAlert");
   if(active){
     const left = mins(active.end)-now;
     el.hidden=false;
-    el.innerHTML = `<span class="ma-icon">${active.icon}</span>
+    el.innerHTML = `<span class="ma-icon">${icon(active.icon)}</span>
       <div><b>${active.name} is ready now</b>
       <span>${active.dv} · ${fmt(active.start)}–${fmt(active.end)} · ${left} min left ·
       For organizers &amp; officials</span></div>`;
   } else if(next && mins(next.start)-now<=30){
     el.hidden=false;
-    el.innerHTML = `<span class="ma-icon">${next.icon}</span>
+    el.innerHTML = `<span class="ma-icon">${icon(next.icon)}</span>
       <div><b>${next.name} in ${mins(next.start)-now} minutes</b>
       <span>${next.dv} · ${fmt(next.start)}–${fmt(next.end)} · For organizers &amp; officials</span></div>`;
   } else el.hidden=true;
@@ -635,9 +744,9 @@ function statusOf(ev,dateStr,now){
   return "scheduled";
 }
 const STATUS_LABEL = {
-  finished:  {icon:"✔", text:"Finished"},
-  ongoing:   {icon:"●", text:"Ongoing"},
-  scheduled: {icon:"○", text:"Scheduled"}
+  finished:  {icon:"check",  text:"Finished"},
+  ongoing:   {icon:"record", text:"Ongoing"},
+  scheduled: {icon:"clock",  text:"Scheduled"}
 };
 
 function card(ev,dateStr,now){
@@ -648,21 +757,21 @@ function card(ev,dateStr,now){
                st==="ongoing"?"live":"", st==="finished"?"past":""].filter(Boolean).join(" ");
   const s = STATUS_LABEL[st];
   const badges = [
-    `<span class="badge status ${st}"><i>${s.icon}</i>${ev.meal&&st==="ongoing"?"Ready now":s.text}</span>`,
+    `<span class="badge status ${st}">${icon(s.icon)}${ev.meal&&st==="ongoing"?"Ready now":s.text}</span>`,
     isSoon?`<span class="badge soon">Starts in ${ev.s-now} min</span>`:"",
     ev.meal?'<span class="badge meal">Meal reminder</span>':"",
     ev.fura?'<span class="badge fura">Furadhaana</span>':""
   ].join("");
   return `<article class="${cls}">
     <div class="card-top">
-      <h4 class="title">${esc(ev.name)}${ev.dv?` <i class="dv">${ev.dv}</i>`:""}</h4>
+      <h4 class="title">${ev.icon?icon(ev.icon)+" ":""}${esc(ev.name)}${ev.dv?` <i class="dv">${ev.dv}</i>`:""}</h4>
       <span class="time">${fmt(ev.start)}${ev.end?"–"+fmt(ev.end):""}</span>
     </div>
     <div class="meta">
       ${ev.batch?`<span class="tag">Batch <b>${esc(ev.batch)}</b></span>`:""}
-      ${ev.audience?`<span class="tag">👥 <b>${esc(ev.audience)}</b></span>`:""}
-      ${ev.venue?`<span class="tag">📍 <b>${esc(ev.venue)}</b></span>`:""}
-      ${ev.facilitator?`<span class="tag">🎤 <b>${esc(ev.facilitator)}</b></span>`:""}
+      ${ev.audience?`<span class="tag"><svg class="ic"><use href="#i-users"/></svg> <b>${esc(ev.audience)}</b></span>`:""}
+      ${ev.venue?`<span class="tag"><svg class="ic"><use href="#i-pin"/></svg> <b>${esc(ev.venue)}</b></span>`:""}
+      ${ev.facilitator?`<span class="tag"><svg class="ic"><use href="#i-mic"/></svg> <b>${esc(ev.facilitator)}</b></span>`:""}
     </div>
     ${badges?`<div class="meta">${badges}</div>`:""}
   </article>`;
@@ -707,6 +816,60 @@ dayEl.addEventListener("change",()=>{ state.date=dayEl.value||today; markDayChip
 audEl.addEventListener("change",render);
 facEl.addEventListener("change",render);
 qEl.addEventListener("input",render);
+
+/* ============================ THEME ============================ */
+const root = document.documentElement;
+const store = { get(k){ try{return localStorage.getItem(k)}catch(e){return null} },
+                set(k,v){ try{localStorage.setItem(k,v)}catch(e){} } };
+
+function applyTheme(mode){                     // "light" | "dark" | null = follow system
+  if(mode) root.setAttribute("data-theme",mode); else root.removeAttribute("data-theme");
+  const dark = mode ? mode==="dark"
+                    : matchMedia("(prefers-color-scheme:dark)").matches;
+  $("#themeIcon").setAttribute("href", dark ? "#i-moon" : "#i-sun");
+  $("#themeLabel").textContent = dark ? "Dark" : "Light";
+  const meta = document.querySelector('meta[name=theme-color]');
+  if(meta) meta.setAttribute("content", dark ? "#123f66" : "#1668b0");
+}
+applyTheme(store.get("theme"));
+$("#themeBtn").addEventListener("click", ()=>{
+  const now = root.getAttribute("data-theme")
+    || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light");
+  const next = now==="dark" ? "light" : "dark";
+  store.set("theme", next); applyTheme(next);
+});
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change", ()=>{
+  if(!store.get("theme")) applyTheme(null);
+});
+
+/* ======================= COLLAPSIBLE PANELS ======================= */
+function initFold(btnSel,key,defaultOpen){
+  const btn=$(btnSel);
+  const saved=store.get(key);
+  const open = saved===null ? defaultOpen : saved==="1";
+  btn.setAttribute("aria-expanded", open);
+  btn.addEventListener("click",()=>{
+    const next = btn.getAttribute("aria-expanded")!=="true";
+    btn.setAttribute("aria-expanded", next);
+    store.set(key, next?"1":"0");
+  });
+}
+// filters start closed on phones, where the panel is tall
+initFold("#filterToggle","fold.filters", !matchMedia("(max-width:560px)").matches);
+initFold("#mealToggle","fold.meals", true);
+
+/* summary shown next to a collapsed heading, so nothing is hidden silently */
+function foldSummaries(activeMeal){
+  const bits=[];
+  if(audEl.value) bits.push(audEl.value);
+  if(facEl.value) bits.push(facEl.value);
+  if(qEl.value.trim()) bits.push('"'+qEl.value.trim()+'"');
+  if(state.from!==0 || state.to!==1439)
+    bits.push(fromEl.value+"–"+toEl.value);
+  $("#filterSummary").textContent = bits.length ? bits.join(" · ") : "No filters";
+  $("#mealSummary").textContent = activeMeal ? activeMeal.name+" ready now"
+    : MEALS.map(m=>fmt(m.start)).join(" · ");
+}
 
 /* clock + live refresh */
 function tick(){
