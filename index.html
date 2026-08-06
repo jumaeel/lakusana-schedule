@@ -157,9 +157,6 @@ h1{margin:10px 0 2px;font-size:clamp(27px,6.4vw,40px);line-height:1.08;letter-sp
 .fold .chev{width:16px;height:16px;flex:0 0 auto;transition:transform .2s}
 .fold[aria-expanded="false"] .chev{transform:rotate(-90deg)}
 .fold[aria-expanded="false"]+*{display:none}
-.meal-bar .fold{margin-top:0;border-top:0;padding-top:0;color:var(--meal)}
-.meal-bar .fold .fsum{color:var(--meal)}
-.meal-bar .fold[aria-expanded="true"]{margin-bottom:10px}
 
 /* ---------- narrow screens ---------- */
 @media (max-width:560px){
@@ -169,12 +166,11 @@ h1{margin:10px 0 2px;font-size:clamp(27px,6.4vw,40px);line-height:1.08;letter-sp
   .theme-btn #themeLabel{display:none}
   .brandline{padding-right:52px}
   .wrap{padding:0 12px 48px}
-  .controls,.meal-bar,.now-strip,.meal-alert{padding:13px}
+  .controls,.now-strip,.meal-alert{padding:13px}
   .stats{grid-template-columns:1fr 1fr;gap:8px}
   .stat{padding:12px}
   .stat .sv{font-size:24px}
   .stat .sn{font-size:11px}
-  .meal-pills{grid-template-columns:1fr}
   .bar{flex-direction:column;align-items:flex-start;gap:2px;margin:18px 2px 8px}
   .card{padding:13px}
   .title{font-size:15.5px}
@@ -236,38 +232,10 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .meal-alert b{display:block;font-size:16px;letter-spacing:-.01em}
 .meal-alert span{font-size:13px;opacity:.92}
 
-.meal-bar{background:var(--meal-soft);border:1px solid color-mix(in srgb,var(--meal) 28%,transparent);
-  border-radius:var(--radius);padding:13px 15px;margin-bottom:16px}
-.meal-bar h2{display:flex;align-items:center;gap:7px;margin:0 0 10px;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--meal)}
-.meal-pills{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(158px,1fr))}
-.meal-pill{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3px 10px;align-items:center;
-  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.meal-pill .mi{display:flex;grid-row:1/3;align-self:center;color:var(--meal)}
-.meal-pill .mi .ic{width:19px;height:19px}
-.meal-pill.on .mi{color:#fff}
-.meal-pill .dv{display:inline;margin-left:5px}
-.meal-pill .mn{font-size:14px;font-weight:600;line-height:1.25;min-width:0;overflow-wrap:anywhere}
-.meal-pill .mt{font-family:var(--font-num);font-size:12.5px;font-weight:600;
-  font-variant-numeric:tabular-nums;color:var(--meal);
-  white-space:nowrap}
-.meal-pill .mr{display:flex;align-items:center;flex-wrap:wrap;gap:4px 9px;min-width:0}
-.meal-pill .ms{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--muted);white-space:nowrap}
-.meal-pill .ms.next{color:var(--meal)}
 
 /* the one being served right now — impossible to miss */
-.meal-pill.on{background:linear-gradient(135deg,#c07d0a,#9a6205);border-color:#8a5704;color:#fff;
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--meal) 38%,transparent),var(--shadow);
-  transform:scale(1.015)}
-.meal-pill.on .mt{color:#fff}
-.meal-pill.on .dv{color:rgba(255,255,255,.82)}
-.meal-pill.on .ms.on{color:#fff}
-.meal-pill .ms.on{display:inline-flex;align-items:center;gap:4px}
-.meal-pill .ms.on .ic{width:9px;height:9px;animation:blink 1.4s ease-in-out infinite}
-.meal-pill.done{opacity:.45}
-.meal-pill .dv,.title .dv{display:inline;font-style:normal;font-weight:400;font-size:13px;
-  color:var(--muted);line-height:2.05}
-.title .dv{display:inline-block;margin-left:6px;vertical-align:baseline}
+.title .dv{display:inline-block;margin-left:6px;vertical-align:baseline;
+  font-size:13px;font-weight:400;color:var(--muted);line-height:2.05}
 .title .ic{color:var(--meal);vertical-align:-.1em}
 
 /* ---------- now strip ---------- */
@@ -446,16 +414,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-
       </div>
     </div>
     </div>
-  </section>
-
-  <section class="meal-bar" aria-label="Meal times">
-    <button class="fold" id="mealToggle" aria-expanded="true" aria-controls="mealPills">
-      <svg class="ic"><use href="#i-food"/></svg>
-      <span class="ft">Food for organizers &amp; officials</span>
-      <span class="fsum" id="mealSummary"></span>
-      <svg class="ic chev"><use href="#i-chev"/></svg>
-    </button>
-    <div class="meal-pills" id="mealPills"></div>
   </section>
 
   <div class="bar">
@@ -758,22 +716,7 @@ function renderMealBar(isToday,now){
   const active = isToday ? MEALS.find(m=>mins(m.start)<=now && now<mins(m.end)) : null;
   const next   = isToday ? MEALS.find(m=>mins(m.start)>now) : null;
 
-  $("#mealPills").innerHTML = MEALS.map(m=>{
-    const on = active===m, done = isToday && now>=mins(m.end);
-    const away = mins(m.start)-now;
-    const status = !isToday ? "" :
-        on   ? `<span class="ms on"><svg class="ic"><use href="#i-record"/></svg>Ready now</span>` :
-        done ? `<span class="ms">Served</span>` :
-        away<=90 ? `<span class="ms next">in ${away} min</span>` :
-                   `<span class="ms">Upcoming</span>`;
-    return `<div class="meal-pill${on?" on":""}${done?" done":""}">
-      <span class="mi">${icon(m.icon)}</span>
-      <span class="mn">${m.name}<i class="dv">${m.dv}</i></span>
-      <span class="mr"><span class="mt">${fmt(m.start)}–${fmt(m.end)}</span>${status}</span>
-    </div>`;
-  }).join("");
-
-  foldSummaries(active);
+  foldSummaries();
 
   const el=$("#mealAlert");
   if(active){
@@ -912,10 +855,9 @@ function initFold(btnSel,key,defaultOpen){
 }
 // filters start closed on phones, where the panel is tall
 initFold("#filterToggle","fold.filters", !matchMedia("(max-width:560px)").matches);
-initFold("#mealToggle","fold.meals", true);
 
 /* summary shown next to a collapsed heading, so nothing is hidden silently */
-function foldSummaries(activeMeal){
+function foldSummaries(){
   const bits=[];
   if(audEl.value) bits.push(audEl.value);
   if(facEl.value) bits.push(facEl.value);
@@ -923,8 +865,6 @@ function foldSummaries(activeMeal){
   if(state.from!==0 || state.to!==1439)
     bits.push(fromEl.value+"–"+toEl.value);
   $("#filterSummary").textContent = bits.length ? bits.join(" · ") : "No filters";
-  $("#mealSummary").textContent = activeMeal ? activeMeal.name+" ready now"
-    : MEALS.map(m=>fmt(m.start)).join(" · ");
 }
 
 /* clock + live refresh */
