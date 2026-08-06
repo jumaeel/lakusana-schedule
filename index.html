@@ -101,6 +101,19 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .chip[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:#fff}
 @media (prefers-color-scheme:dark){.chip[aria-pressed=true]{color:#08192a}}
 
+/* ---------- stats ---------- */
+.stats{display:grid;gap:10px;margin-bottom:16px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:14px 15px}
+.stat .sl{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.stat .sl i{font-style:normal;font-size:13px}
+.stat .sv{display:block;margin-top:7px;font-size:30px;font-weight:650;line-height:1;
+  letter-spacing:-.02em;color:var(--ink)}
+.stat .sn{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
+.stat .sn em{font-style:normal;color:var(--ink);font-weight:600}
+
 /* ---------- meals ---------- */
 .meal-alert{display:flex;align-items:center;gap:13px;margin-bottom:16px;padding:14px 16px;
   border-radius:var(--radius);color:#fff;box-shadow:var(--shadow);
@@ -122,7 +135,19 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .meal-pill .mn{font-size:14px;font-weight:600;line-height:1.25;flex:1 1 auto;min-width:0}
 .meal-pill .mt{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--meal);
   white-space:nowrap}
-.meal-pill.on{border-color:var(--meal);box-shadow:0 0 0 2px color-mix(in srgb,var(--meal) 30%,transparent)}
+.meal-pill .mr{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:0 0 auto}
+.meal-pill .ms{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap}
+.meal-pill .ms.next{color:var(--meal)}
+
+/* the one being served right now — impossible to miss */
+.meal-pill.on{background:linear-gradient(135deg,#c07d0a,#9a6205);border-color:#8a5704;color:#fff;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--meal) 38%,transparent),var(--shadow);
+  transform:scale(1.015)}
+.meal-pill.on .mt{color:#fff}
+.meal-pill.on .dv{color:rgba(255,255,255,.82)}
+.meal-pill.on .ms.on{color:#fff}
+.meal-pill.on .ms.on::first-letter{animation:blink 1.4s ease-in-out infinite}
 .meal-pill.done{opacity:.45}
 .dv{display:block;font-style:normal;font-weight:500;font-size:12.5px;color:var(--muted);
   direction:rtl;unicode-bidi:isolate}
@@ -212,6 +237,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;margin-top:34px;line-
 </header>
 
 <div class="wrap">
+
+  <section class="stats" id="stats" aria-label="Schedule summary"></section>
 
   <section class="controls">
     <div class="field" style="margin-bottom:14px">
@@ -485,6 +512,7 @@ function render(){
   const now = nowMinutes();
 
   $("#dayTitle").textContent = day ? day.label : "No schedule for this day";
+  renderStats(isToday);
   renderMealBar(isToday, now);
 
   if(!day){
@@ -534,16 +562,51 @@ function render(){
   }).join("");
 }
 
+/* Day-level summary — independent of the filters below it */
+const isRealVenue = v => v && v.toUpperCase()!=="TBD";
+function uniques(rows){
+  return {
+    events: rows.length,
+    facs:   new Set(rows.flatMap(r=>splitFac(r[6]))).size,
+    venues: new Set(rows.map(r=>r[5]).filter(isRealVenue)).size
+  };
+}
+const ALL_ROWS = dates.flatMap(d=>SCHEDULE[d].rows);
+const TOTALS = uniques(ALL_ROWS);
+
+function renderStats(isToday){
+  const day = SCHEDULE[state.date];
+  const d = uniques(day?day.rows:[]);
+  const dayWord = day ? (isToday ? "Today's events" : day.label.split("—")[0].trim()+" events")
+                      : "Events";
+  const tiles = [
+    {icon:"📋", label:dayWord,     value:d.events, note:`<em>${TOTALS.events}</em> across all ${dates.length} days`},
+    {icon:"🎤", label:"Facilitators", value:d.facs, note:`<em>${TOTALS.facs}</em> in total`},
+    {icon:"📍", label:"Locations",    value:d.venues, note:`<em>${TOTALS.venues}</em> venues in use`}
+  ];
+  $("#stats").innerHTML = tiles.map(t=>`<div class="stat">
+      <span class="sl"><i>${t.icon}</i>${esc(t.label)}</span>
+      <b class="sv">${t.value}</b>
+      <span class="sn">${t.note}</span>
+    </div>`).join("");
+}
+
 function renderMealBar(isToday,now){
   const active = isToday ? MEALS.find(m=>mins(m.start)<=now && now<mins(m.end)) : null;
   const next   = isToday ? MEALS.find(m=>mins(m.start)>now) : null;
 
   $("#mealPills").innerHTML = MEALS.map(m=>{
     const on = active===m, done = isToday && now>=mins(m.end);
+    const away = mins(m.start)-now;
+    const status = !isToday ? "" :
+        on   ? `<span class="ms on">● Ready now</span>` :
+        done ? `<span class="ms">Served</span>` :
+        away<=90 ? `<span class="ms next">in ${away} min</span>` :
+                   `<span class="ms">Upcoming</span>`;
     return `<div class="meal-pill${on?" on":""}${done?" done":""}">
       <span class="mi">${m.icon}</span>
       <span class="mn">${m.name}<i class="dv">${m.dv}</i></span>
-      <span class="mt">${fmt(m.start)}–${fmt(m.end)}</span>
+      <span class="mr"><span class="mt">${fmt(m.start)}–${fmt(m.end)}</span>${status}</span>
     </div>`;
   }).join("");
 
@@ -552,7 +615,7 @@ function renderMealBar(isToday,now){
     const left = mins(active.end)-now;
     el.hidden=false;
     el.innerHTML = `<span class="ma-icon">${active.icon}</span>
-      <div><b>${active.name} is being served now</b>
+      <div><b>${active.name} is ready now</b>
       <span>${active.dv} · ${fmt(active.start)}–${fmt(active.end)} · ${left} min left ·
       For organizers &amp; officials</span></div>`;
   } else if(next && mins(next.start)-now<=30){
@@ -585,7 +648,7 @@ function card(ev,dateStr,now){
                st==="ongoing"?"live":"", st==="finished"?"past":""].filter(Boolean).join(" ");
   const s = STATUS_LABEL[st];
   const badges = [
-    `<span class="badge status ${st}"><i>${s.icon}</i>${ev.meal&&st==="ongoing"?"Serving now":s.text}</span>`,
+    `<span class="badge status ${st}"><i>${s.icon}</i>${ev.meal&&st==="ongoing"?"Ready now":s.text}</span>`,
     isSoon?`<span class="badge soon">Starts in ${ev.s-now} min</span>`:"",
     ev.meal?'<span class="badge meal">Meal reminder</span>':"",
     ev.fura?'<span class="badge fura">Furadhaana</span>':""
